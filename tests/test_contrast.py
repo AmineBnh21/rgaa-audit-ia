@@ -111,6 +111,16 @@ def test_page_reelle():
     }
 
 
-def test_limite_du_nombre_d_elements():
+def test_limite_atteinte_signalee():
     with charger_page((FIXTURES / "contraste.html").as_uri()) as chargee:
-        assert len(verifier_contraste(chargee.page, max_elements=2)) == 2
+        resultats = verifier_contraste(chargee.page, max_elements=2)
+
+    assert [r.element for r in resultats[:2]] == ["#ok", "body > p:nth-of-type(2)"]
+    assert resultats[2].statut == "a_verifier"
+    assert resultats[2].element is None
+    assert "Limite de 2 textes atteinte" in resultats[2].justification
+
+
+def test_limite_non_atteinte_pas_de_signalement():
+    with charger_page((FIXTURES / "contraste.html").as_uri()) as chargee:
+        assert len(verifier_contraste(chargee.page, max_elements=5)) == 5

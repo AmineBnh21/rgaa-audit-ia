@@ -111,10 +111,23 @@ class TexteMesure:
 
 def verifier_contraste(page: Page, max_elements: int = MAX_ELEMENTS) -> list[CheckResult]:
     """Évalue le contraste des `max_elements` premiers textes visibles de la page."""
-    textes = [TexteMesure(**donnees) for donnees in page.evaluate(_SCRIPT_COLLECTE, max_elements)]
+    # Un texte de plus que la limite, pour savoir si elle est atteinte
+    collectes = page.evaluate(_SCRIPT_COLLECTE, max_elements + 1)
+    textes = [TexteMesure(**donnees) for donnees in collectes[:max_elements]]
     if not textes:
         return [_resultat(None, "non_applicable", "La page ne contient aucun texte visible.")]
-    return [evaluer_texte(texte) for texte in textes]
+
+    resultats = [evaluer_texte(texte) for texte in textes]
+    if len(collectes) > max_elements:
+        resultats.append(
+            _resultat(
+                None,
+                "a_verifier",
+                f"Limite de {max_elements} textes atteinte : les textes suivants de la page "
+                "n'ont pas été vérifiés.",
+            )
+        )
+    return resultats
 
 
 def evaluer_texte(texte: TexteMesure) -> CheckResult:
