@@ -1,11 +1,11 @@
 import pytest
 from pydantic import ValidationError
 
-from rgaa_audit.models import MAX_ELEMENT_LENGTH, CheckResult
+from rgaa_audit.models import LONGUEUR_MAX_ELEMENT, CheckResult
 
 
-def make_result(**overrides) -> CheckResult:
-    fields = {
+def creer_resultat(**surcharges) -> CheckResult:
+    champs = {
         "critere": "RGAA 1.1",
         "titre": "Chaque image porteuse d'information a-t-elle une alternative textuelle ?",
         "methode": "regle",
@@ -13,24 +13,24 @@ def make_result(**overrides) -> CheckResult:
         "element": '<img src="logo.png">',
         "justification": "L'image n'a pas d'attribut alt.",
     }
-    return CheckResult(**(fields | overrides))
+    return CheckResult(**(champs | surcharges))
 
 
-def test_long_element_is_truncated():
-    result = make_result(element="x" * 500)
-    assert len(result.element) == MAX_ELEMENT_LENGTH
+def test_element_long_est_tronque():
+    resultat = creer_resultat(element="x" * 500)
+    assert len(resultat.element) == LONGUEUR_MAX_ELEMENT
 
 
-def test_blank_justification_is_rejected():
+def test_justification_vide_refusee():
     with pytest.raises(ValidationError):
-        make_result(justification="   ")
+        creer_resultat(justification="   ")
 
 
-def test_confiance_is_rejected_for_rule_method():
+def test_confiance_refusee_pour_methode_regle():
     with pytest.raises(ValidationError):
-        make_result(confiance=0.9)
+        creer_resultat(confiance=0.9)
 
 
-def test_confiance_is_accepted_for_llm_method():
-    result = make_result(methode="llm", statut="conforme", confiance=0.8)
-    assert result.confiance == 0.8
+def test_confiance_acceptee_pour_methode_llm():
+    resultat = creer_resultat(methode="llm", statut="conforme", confiance=0.8)
+    assert resultat.confiance == 0.8

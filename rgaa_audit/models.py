@@ -4,7 +4,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-MAX_ELEMENT_LENGTH = 200
+LONGUEUR_MAX_ELEMENT = 200
 
 Methode = Literal["regle", "llm"]
 Statut = Literal["conforme", "non_conforme", "a_verifier", "non_applicable"]
@@ -26,20 +26,20 @@ class CheckResult(BaseModel):
 
     @field_validator("element")
     @classmethod
-    def _truncate_element(cls, value: str | None) -> str | None:
-        if value is None or len(value) <= MAX_ELEMENT_LENGTH:
-            return value
-        return value[: MAX_ELEMENT_LENGTH - 1] + "…"
+    def _tronquer_element(cls, valeur: str | None) -> str | None:
+        if valeur is None or len(valeur) <= LONGUEUR_MAX_ELEMENT:
+            return valeur
+        return valeur[: LONGUEUR_MAX_ELEMENT - 1] + "…"
 
     @field_validator("justification")
     @classmethod
-    def _justification_not_blank(cls, value: str) -> str:
-        if not value.strip():
+    def _justification_non_vide(cls, valeur: str) -> str:
+        if not valeur.strip():
             raise ValueError("un résultat doit toujours être justifié")
-        return value.strip()
+        return valeur.strip()
 
     @model_validator(mode="after")
-    def _confiance_only_for_llm(self) -> "CheckResult":
+    def _confiance_reservee_au_llm(self) -> "CheckResult":
         if self.methode == "regle" and self.confiance is not None:
             raise ValueError("la confiance est réservée à la méthode llm")
         return self
