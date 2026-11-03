@@ -1,0 +1,138 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Aucun appel LLM en CI : les tests doivent passer sans clé API
+  LLM_PROVIDER: none
+
+jobs:
+  # 1. Qualité de code
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check .
+      - run: ruff format --check .
+
+  # 2. Tests unitaires sur plusieurs versions de Python
+  test:
+    name: Tests (Python ${{ matrix.python-version }})
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Installer les dépendances
+        run: |
+          pip install -r requirements.txt
+          pip install pytest-cov
+          playwright install --with-deps chromium
+      - name: Lancer pytest
+        run: pytest --cov=rgaa_audit --cov-report=term-missing --cov-report=xml
+      - name: Publier la couverture
+        if: matrix.python-version == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage.xml
+
+  # 3. Test de bout en bout : audit d'une page de test servie en local
+  smoke:
+    name: Smoke test (audit réel sans LLM)
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+      - name: Servir les fixtures et lancer l'audit
+        run: |
+          python -m http.server 8000 --directory tests/fixtures &
+          sleep 2
+          python audit.py http://localhost:8000/page_test.html --no-llm --out rapports/
+          test -s rapports/rapport.json
+          test -s rapports/rapport.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rapport-smoke
+          path: rapports/
+
+  # 4. Déploiement continu : image Docker publiée sur GitHub Container Registry
+  docker:
+    name: Build & push Docker (GHCR)
+    needs: smoke
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=semver,pattern={{version}}
+            type=sha,prefix=sha-
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # 5. Release GitHub automatique sur tag v*
+  release:
+    name: Release GitHub
+    needs: docker
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: rapport-smoke
+          path: rapports/
+      - uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: rapports/*

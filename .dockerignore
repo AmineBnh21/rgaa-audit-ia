@@ -1,0 +1,13 @@
+.git
+.github
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+rapports/
+tests/
+examples/
+coverage.xml
