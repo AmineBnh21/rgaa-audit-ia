@@ -109,10 +109,19 @@ def _post(url: str, corps: dict, entetes: dict[str, str] | None = None) -> dict:
         time.sleep(ATTENTE_AVANT_NOUVEL_ESSAI_S)
         reponse = requests.post(url, json=corps, headers=entetes, timeout=DELAI_S)
     if not reponse.ok:
-        # Le corps de la réponse explique l'erreur (modèle retiré, quota, clé invalide...)
-        detail = " ".join(reponse.text.split())[:300]
-        raise requests.HTTPError(f"HTTP {reponse.status_code} : {detail}", response=reponse)
+        message = f"HTTP {reponse.status_code} : {_detail_erreur(reponse)}"
+        raise requests.HTTPError(message, response=reponse)
     return reponse.json()
+
+
+def _detail_erreur(reponse: requests.Response) -> str:
+    """Message d'erreur de l'API (modèle retiré, quota, clé invalide...), sinon corps brut."""
+    try:
+        # Format commun à Gemini, OpenAI et Anthropic : {"error": {"message": "..."}}
+        detail = reponse.json()["error"]["message"]
+    except (ValueError, KeyError, TypeError):
+        detail = reponse.text
+    return " ".join(str(detail).split())[:200]
 
 
 def _appeler_gemini(modele: str, prompt: str, image: str, type_mime: str) -> str:

@@ -104,6 +104,22 @@ def test_une_seule_nouvelle_tentative_si_erreur_temporaire(
     assert len(appels) == nb_appels_attendu
 
 
+@pytest.mark.parametrize(
+    ("corps", "attendu"),
+    [
+        ({"error": {"code": 429, "message": "Quota\n  dépassé."}}, "HTTP 429 : Quota dépassé."),
+        ({"error": "modèle absent"}, "HTTP 429 : erreur 429"),
+        (None, "HTTP 429 : erreur 429"),
+    ],
+)
+def test_message_d_erreur_http_lisible(monkeypatch, corps, attendu):
+    monkeypatch.setattr(llm.requests, "post", lambda url, **kwargs: FausseReponse(429, corps))
+    monkeypatch.setattr(llm, "ATTENTE_AVANT_NOUVEL_ESSAI_S", 0)
+    with pytest.raises(llm.requests.HTTPError) as erreur:
+        llm._post("https://exemple.test", {})
+    assert str(erreur.value) == attendu
+
+
 def test_reponse_inattendue_du_fournisseur(monkeypatch):
     monkeypatch.setenv("LLM_PROVIDER", "ollama")
     monkeypatch.setattr(llm, "_post", lambda url, corps, entetes=None: {"error": "modèle absent"})
