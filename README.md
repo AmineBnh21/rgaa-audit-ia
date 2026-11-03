@@ -2,6 +2,23 @@
 
 [![CI/CD](https://github.com/AmineBnh21/rgaa-audit-ia/actions/workflows/ci.yml/badge.svg)](https://github.com/AmineBnh21/rgaa-audit-ia/actions/workflows/ci.yml)
 
+![RGAA 4.1](https://img.shields.io/badge/RGAA-4.1-000091?style=for-the-badge)
+![WCAG 2.1](https://img.shields.io/badge/WCAG-2.1-005A9C?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-1.48-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
+![Beautiful Soup](https://img.shields.io/badge/Beautiful%20Soup-4-4B8BBE?style=for-the-badge)
+![Pydantic](https://img.shields.io/badge/Pydantic-v2-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
+
+![Gemini](https://img.shields.io/badge/Gemini-vision-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-vision-412991?style=for-the-badge&logo=openai&logoColor=white)
+![Anthropic](https://img.shields.io/badge/Anthropic-vision-191919?style=for-the-badge&logo=anthropic&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-local-000000?style=for-the-badge&logo=ollama&logoColor=white)
+
+![pytest](https://img.shields.io/badge/pytest-sans%20appel%20LLM-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
+![Ruff](https://img.shields.io/badge/Ruff-lint%20%2B%20format-D7FF64?style=for-the-badge&logo=ruff&logoColor=black)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-GHCR-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+
 Prototype Python d'audit d'accessibilité web selon le **RGAA 4.1**. L'outil charge une page dans un vrai navigateur, vérifie trois critères par **règles déterministes** et un critère par **LLM vision**, puis produit un rapport où **chaque verdict est justifié**.
 
 ```bash
