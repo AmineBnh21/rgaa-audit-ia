@@ -1,0 +1,297 @@
+# Rapport d'audit RGAA 4.1
+
+- Page auditée : https://fr.wikipedia.org/wiki/Accessibilit%C3%A9_du_web
+- Date : 03/11/2026 12:21
+
+## Résumé par critère
+
+| Critère | Méthode | Conformes | Non conformes | À vérifier | Non applicables |
+|---|---|---|---|---|---|
+| RGAA 1.1 | regle | 9 | 1 | 4 | 0 |
+| RGAA 1.3 | llm | 4 | 1 | 1 | 0 |
+| RGAA 3.2 | regle | 200 | 0 | 1 | 0 |
+| RGAA 9.1 | regle | 49 | 0 | 0 | 0 |
+
+## Détail
+
+### RGAA 1.1 : Chaque image porteuse d'information a-t-elle une alternative textuelle ?
+
+- **À vérifier** `<img alt="" aria-hidden="true" class="mw-logo-icon" height="50" src="/static/images/icons/wikipedia.png" width="50"/>` : L'attribut alt est vide : acceptable uniquement si l'image est décorative.
+- **Conforme** `<img alt="Wikipédia" class="mw-logo-wordmark" src="/static/images/mobile/copyright/wikipedia-wordmark-fr.svg" style="width: 7.4375em; height: 1.125em;"/>` : Alternative textuelle présente : "Wikipédia".
+- **Conforme** `<img alt="l'encyclopédie libre" class="mw-logo-tagline" height="13" src="/static/images/mobile/copyright/wikipedia-tagline-fr.svg" style="width: 7.5em; height: 0.8125em;" width="120"/>` : Alternative textuelle présente : "l'encyclopédie libre".
+- **Conforme** `<img alt="Plage braille comportant une ligne de 40 caractères brailles et plusieurs touches spéciales." class="mw-file-element" data-file-height="1536" data-file-type="bitmap" data-file-width="2048" …` : Alternative textuelle présente : "Plage braille comportant une ligne de 40 caractères brailles et plusieurs touches spéciales.".
+- **Conforme** `<img alt="Plage braille comportant une ligne de 40 caractères braille." class="mw-file-element" data-file-height="1536" data-file-type="bitmap" data-file-width="2048" decoding="async" height="188" id…` : Alternative textuelle présente : "Plage braille comportant une ligne de 40 caractères braille.".
+- **À vérifier** `<img alt="" class="mw-file-element" data-file-height="640" data-file-type="drawing" data-file-width="512" decoding="async" height="17" loading="lazy" resource="https://fr.wikipedia.org/wiki/Fichier:L…` : L'attribut alt est vide : acceptable uniquement si l'image est décorative.
+- **À vérifier** `<img alt="" class="mw-file-element" data-file-height="512" data-file-type="drawing" data-file-width="512" decoding="async" height="25" loading="lazy" resource="https://fr.wikipedia.org/wiki/Fichier:2…` : L'attribut alt est vide : acceptable uniquement si l'image est décorative.
+- **Non conforme** `<img class="mw-file-element" data-file-height="320" data-file-type="bitmap" data-file-width="240" decoding="async" height="320" id="mwAsU" loading="lazy" resource="https://fr.wikipedia.org/wiki/Fichi…` : La balise <img> n'a pas d'attribut alt.
+- **Conforme** `<img alt="Accès payant" class="mw-file-element" data-file-height="947" data-file-type="drawing" data-file-width="597" decoding="async" height="14" id="mwBg8" loading="lazy" resource="https://fr.wikip…` : Alternative textuelle présente : "Accès payant".
+- **Conforme** `<img alt="icône décorative" class="mw-file-element" data-file-height="42" data-file-type="drawing" data-file-width="39" decoding="async" height="24" loading="lazy" resource="https://fr.wikipedia.org/…` : Alternative textuelle présente : "icône décorative".
+- **Conforme** `<img alt="icône décorative" class="mw-file-element" data-file-height="512" data-file-type="drawing" data-file-width="512" decoding="async" height="24" loading="lazy" resource="https://fr.wikipedia.or…` : Alternative textuelle présente : "icône décorative".
+- **À vérifier** `<img alt="" height="1" src="https://fr.wikipedia.org/wiki/Special:CentralAutoLogin/start?useformat=desktop&amp;type=1x1&amp;usesul3=1" style="border: none; position: absolute;" width="1"/>` : L'attribut alt est vide : acceptable uniquement si l'image est décorative.
+- **Conforme** `<img alt="Wikimedia Foundation" height="25" lang="en" loading="lazy" src="/static/images/footer/wikimedia.svg" width="25"/>` : Alternative textuelle présente : "Wikimedia Foundation".
+- **Conforme** `<img alt="Powered by MediaWiki" height="25" lang="en" loading="lazy" src="/w/resources/assets/mediawiki_compact.svg" width="25"/>` : Alternative textuelle présente : "Powered by MediaWiki".
+
+### RGAA 1.3 : Chaque image porteuse d'information ayant une alternative textuelle, cette alternative est-elle pertinente ?
+
+- **Conforme** `<img class="mw-logo-wordmark" alt="Wikipédia" src="/static/images/mobile/copyright/wikipedia-wordmark-fr.svg" style="width: 7.4375em; height: 1.125em;">` : Alt "Wikipédia" jugé pertinent par le LLM : L'alternative textuelle "Wikipédia" identifie clairement le logo de la marque qui sert également de lien vers la page d'accueil. (confiance 1.00)
+- **Conforme** `<img class="mw-logo-tagline" alt="l'encyclopédie libre" src="/static/images/mobile/copyright/wikipedia-tagline-fr.svg" width="120" height="13" style="width: 7.5em; height: 0.8125em;">` : Alt "l'encyclopédie libre" jugé pertinent par le LLM : L'alternative textuelle décrit correctement le rôle de l'image (le slogan du site) lorsqu'elle est utilisée en complément du logo dans un lien. (confiance 0.95)
+- **Conforme** `<img resource="https://fr.wikipedia.org/wiki/Fichier:Plage-braille-avec-touches-speciales.jpg" src="//thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Plage-braille-avec-touches-speciales.jpg/250px-P…` : Alt "Plage braille comportant une ligne de 40 caractères brailles et plusieurs touches spéciales." jugé pertinent par le LLM : L'alternative textuelle décrit précisément la nature et les composants de la plage braille tout en restant concise et complémentaire au texte environnant. (confiance 0.95)
+- **Conforme** `<img resource="https://fr.wikipedia.org/wiki/Fichier:Plage-braille-Alva.jpg" src="//thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Plage-braille-Alva.jpg/250px-Plage-braille-Alva.jpg?utm_source=fr.…` : Alt "Plage braille comportant une ligne de 40 caractères braille." jugé pertinent par le LLM : L'alternative textuelle décrit précisément le type d'équipement (plage braille) et sa caractéristique principale présente sur l'image, complétant utilement le texte environnant sans redondance excessive. (confiance 0.95)
+- **Non conforme** `<img resource="https://fr.wikipedia.org/wiki/Fichier:Lock-red-alt-2.svg" src="//thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Lock-red-alt-2.svg/20px-Lock-red-alt-2.svg.png?utm_source=fr.wikipedia…` : Alt "Accès payant" jugé insuffisant par le LLM : L'image représente un cadenas ou un symbole de restriction, mais le texte alternatif 'Accès payant' ne correspond pas à sa fonction, d'autant plus que l'image n'est pas interactive (hors d'un lien) et qu'aucun autre élément ne justifie cette information dans le contexte bibliographique. (confiance 0.95)
+- **À vérifier** : 4 image(s) avec alt non évaluée(s) : plafond de 5 appels LLM atteint (option --max-llm).
+
+### RGAA 3.2 : Dans chaque page web, le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé ?
+
+- **Conforme** `body > a` : Texte "Aller au contenu" : ratio 5.09:1 (#3366cc sur #f8f9fa), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#vector-main-menu-dropdown-label > span:nth-of-type(2)` : Texte "Menu principal" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 700).
+- **Conforme** `#searchform > button` : Texte "Rechercher" : ratio 9.57:1 (#404244 sur #f8f9fa), minimum 4.5:1 pour du texte normal (14 px, graisse 700).
+- **Conforme** `#pt-sitesupport-2 > a > span` : Texte "Faire un don" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#pt-createaccount-2 > a > span` : Texte "Créer un compte" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#pt-login-2 > a > span` : Texte "Se connecter" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#vector-toc > div > h2` : Texte "Sommaire" : ratio 18.50:1 (#101418 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 700).
+- **Conforme** `#vector-toc > div > button:nth-of-type(2)` : Texte "masquer" : ratio 13.64:1 (#202122 sur #eaecf0), minimum 4.5:1 pour du texte normal (12 px, graisse 400).
+- **Conforme** `#toc-mw-content-text > a > div` : Texte "Début" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 700).
+- **Conforme** `#toc-Champ_de_l\'accessibilité > a > div > span:nth-of-type(2)` : Texte "Champ de l'accessibilité" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#toc-Champ_de_l\'accessibilité > button > span:nth-of-type(2)` : Texte "Afficher / masquer la sous-section Champ de l'accessibilité" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (11.2 px, graisse 700).
+- **Conforme** `#toc-Normes_internationales > a > div > span:nth-of-type(2)` : Texte "Normes internationales" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#toc-Normes_internationales > button > span:nth-of-type(2)` : Texte "Afficher / masquer la sous-section Normes internationales" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (11.2 px, graisse 700).
+- **Conforme** `#toc-Déploiement\,_évaluation_et_suivi > a > div > span:nth-of-type(2)` : Texte "Déploiement, évaluation et suivi" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#toc-Déploiement\,_évaluation_et_suivi > button > span:nth-of-type(2)` : Texte "Afficher / masquer la sous-section Déploiement, évaluation et suivi" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (11.2 px, graisse 700).
+- **Conforme** `#toc-Acteurs_de_l\'accessibilité > a > div > span:nth-of-type(2)` : Texte "Acteurs de l'accessibilité" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#toc-Acteurs_de_l\'accessibilité > button > span:nth-of-type(2)` : Texte "Afficher / masquer la sous-section Acteurs de l'accessibilité" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (11.2 px, graisse 700).
+- **Conforme** `#toc-Législation_et_règlementation > a > div > span:nth-of-type(2)` : Texte "Législation et règlementation" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#toc-Législation_et_règlementation > button > span:nth-of-type(2)` : Texte "Afficher / masquer la sous-section Législation et règlementation" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (11.2 px, graisse 700).
+- **Conforme** `#toc-État_de_l\'accessibilité_du_web > a > div > span:nth-of-type(2)` : Texte "État de l'accessibilité du web" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#toc-Notes_et_références > a > div > span:nth-of-type(2)` : Texte "Notes et références" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#toc-Notes_et_références > button > span:nth-of-type(2)` : Texte "Afficher / masquer la sous-section Notes et références" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (11.2 px, graisse 700).
+- **Conforme** `#toc-Voir_aussi > a > div > span:nth-of-type(2)` : Texte "Voir aussi" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#toc-Voir_aussi > button > span:nth-of-type(2)` : Texte "Afficher / masquer la sous-section Voir aussi" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (11.2 px, graisse 700).
+- **Conforme** `#firstHeading > span > span` : Texte "Accessibilité du web" : ratio 18.50:1 (#101418 sur #ffffff), minimum 3.0:1 pour du texte large (28.8 px, graisse 400).
+- **Conforme** `#p-lang-btn-label > span:nth-of-type(2)` : Texte "25 langues" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 700).
+- **Conforme** `#ca-nstab-main > a > span` : Texte "Article" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#ca-talk > a > span` : Texte "Discussion" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#ca-view > a > span` : Texte "Lire" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#ca-ve-edit > a > span` : Texte "Modifier" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#ca-edit > a > span` : Texte "Modifier le code" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#ca-history > a > span` : Texte "Voir l’historique" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#ca-bookmark > a > span:nth-of-type(2)` : Texte "Enregistrer" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#vector-page-tools-dropdown-label > span:nth-of-type(2)` : Texte "Outils" : ratio 10.09:1 (#404244 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#vector-appearance > div:nth-of-type(1) > div` : Texte "Apparence" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 700).
+- **Conforme** `#vector-appearance > div:nth-of-type(1) > button:nth-of-type(2)` : Texte "masquer" : ratio 13.64:1 (#202122 sur #eaecf0), minimum 4.5:1 pour du texte normal (12 px, graisse 400).
+- **Conforme** `#skin-client-prefs-vector-feature-custom-font-size > div:nth-of-type(1)` : Texte "Taille du texte" : ratio 7.09:1 (#54595d sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-vector-feature-custom-font-size > div:nth-of-type(2) > ul > li > div > form > div:nth-of-type(1) > label > span` : Texte "Petite" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-vector-feature-custom-font-size > div:nth-of-type(2) > ul > li > div > form > div:nth-of-type(2) > label > span` : Texte "Standard" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-vector-feature-custom-font-size > div:nth-of-type(2) > ul > li > div > form > div:nth-of-type(3) > label > span` : Texte "Grande" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-vector-feature-limited-width > div:nth-of-type(1)` : Texte "Largeur" : ratio 7.09:1 (#54595d sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-vector-feature-limited-width > div:nth-of-type(2) > ul > li > div > form > div:nth-of-type(1) > label > span` : Texte "Standard" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-vector-feature-limited-width > div:nth-of-type(2) > ul > li > div > form > div:nth-of-type(2) > label > span` : Texte "Large" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-skin-theme > div:nth-of-type(1)` : Texte "Couleur" : ratio 7.09:1 (#54595d sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-skin-theme > div:nth-of-type(1) > span > span` : Texte "(bêta)" : ratio 7.09:1 (#54595d sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-skin-theme > div:nth-of-type(2) > ul > li > div > form > div:nth-of-type(1) > label > span` : Texte "Automatique" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-skin-theme > div:nth-of-type(2) > ul > li > div > form > div:nth-of-type(2) > label > span` : Texte "Clair" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#skin-client-prefs-skin-theme > div:nth-of-type(2) > ul > li > div > form > div:nth-of-type(3) > label > span` : Texte "Sombre" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (14 px, graisse 400).
+- **Conforme** `#mwAg` : Texte "L’" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwAw` : Texte "accessibilité du web" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 700).
+- **Conforme** `#mwBA` : Texte "contenus et services web" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwBQ` : Texte "handicapées" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwBg` : Texte "déficients visuels" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwBw` : Texte "sourds" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwCA` : Texte "," : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwCQ` : Texte "etc." : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwDA` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwCw` : Texte "W3C 1" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwDQ` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwDg` : Texte "mobile" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwDw` : Texte "tablette" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwEA` : Texte "," : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwEQ` : Texte "etc." : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwFA` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwEw` : Texte "W3C 2" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwFQ` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwFg` : Texte "," : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwFw` : Texte "etc." : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwGA` : Texte "Cette problématique est souvent appelée «" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwHQ` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwHA` : Texte "1" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwHg` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwHw > span` : Texte "accessibility" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwIA` : Texte "Les pratiques d'accessibilité cherchent à réduire ou supprimer les obstacles qui" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwIQ` : Texte "texte de remplacement" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwIg` : Texte "L'accessibilité est définie par des normes" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwIw` : Texte "techniques" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwJg` : Texte "Web Accessibility Initiative" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwKA` : Texte "World Wide Web Consortium" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwKQ` : Texte "site web" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwKg` : Texte "Bien qu'il soit une composante et un levier d'amélioration de leur qualité globa" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwLQ` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwLA` : Texte "Note 1" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwLg` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#Champ_de_l\'accessibilité` : Texte "Champ de l'accessibilité" : ratio 18.50:1 (#101418 sur #ffffff), minimum 3.0:1 pour du texte large (24 px, graisse 400).
+- **Conforme** `#mwMA > div > span > a:nth-of-type(1) > span` : Texte "modifier" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (13 px, graisse 400).
+- **Conforme** `#mwMA > div > span > a:nth-of-type(2) > span` : Texte "modifier le code" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (13 px, graisse 400).
+- **Conforme** `#mwMQ` : Texte "L'accessibilité du web est définie par la" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwMg > a` : Texte "Web Accessibility Initiative" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwNQ` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwNA` : Texte "W3C 3" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwNg` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwNw` : Texte "accessibilité numérique" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwOg` : Texte "«" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwPQ` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwPA` : Texte "2" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwPg` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwPw` : Texte "C'est un droit universel, selon l'" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwQA` : Texte "article 9" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwQQ` : Texte "Convention relative aux droits des personnes handicapées" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwQg` : Texte "Organisation des Nations unies" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwRQ` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwRA` : Texte "Note 2" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwRg` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwRw` : Texte "«" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwRw > a:nth-of-type(1)` : Texte "technologies de l’information et de la communication" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwRw > a:nth-of-type(2)` : Texte "Internet" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwSg` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwSQ` : Texte "3" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwSw` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#Contextes_utilisateur` : Texte "Contextes utilisateur" : ratio 18.50:1 (#101418 sur #ffffff), minimum 3.0:1 pour du texte large (19.2 px, graisse 700).
+- **Conforme** `#mwTA > div > span > a:nth-of-type(1) > span` : Texte "modifier" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (13 px, graisse 400).
+- **Conforme** `#mwTA > div > span > a:nth-of-type(2) > span` : Texte "modifier le code" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (13 px, graisse 400).
+- **Conforme** `#mwUQ` : Texte "Exemple de technologie d'assistance" : ratio 15.30:1 (#202122 sur #f8f9fa), minimum 4.5:1 pour du texte normal (14.144 px, graisse 400).
+- **Conforme** `#mwUw` : Texte "plage braille" : ratio 5.09:1 (#3366cc sur #f8f9fa), minimum 4.5:1 pour du texte normal (14.144 px, graisse 400).
+- **Conforme** `#mwWA` : Texte "Cette autre" : ratio 15.30:1 (#202122 sur #f8f9fa), minimum 4.5:1 pour du texte normal (14.144 px, graisse 400).
+- **Conforme** `#mwWQ` : Texte "plage braille" : ratio 5.09:1 (#3366cc sur #f8f9fa), minimum 4.5:1 pour du texte normal (14.144 px, graisse 400).
+- **Conforme** `#mwWg` : Texte "Même dans cette acception étroitement liée au handicap, l'accessibilité vise une" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwXQ` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwXA` : Texte "Note 3" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwXg` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwYQ` : Texte "la diversité des" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwYg` : Texte "handicaps" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwZQ` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwZA` : Texte "W3C 4" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwZg` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwZw` : Texte "cécité" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwaA` : Texte "trouble de la vision" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwaQ` : Texte "daltonisme" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwag` : Texte "achromatopsie" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwaw` : Texte "surdité" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwbA` : Texte "vieillissement" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwbg` : Texte "la variété des périphériques d'entrée et de sortie, et celle des technologies d'" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwcQ` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwcA` : Texte "W3C 5" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwcg` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwdA` : Texte "lecteurs d'écran" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwdQ` : Texte "JAWS" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwdg > a` : Texte "NonVisual Desktop Access" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwdw > a` : Texte "VoiceOver" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwdw` : Texte "Window-Eyes" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mweg` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mweQ` : Texte "Note 4" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwew` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwfA` : Texte "SRCore" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwfQ` : Texte "Gnopernicus" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwfg` : Texte "synthèse vocale" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwfw` : Texte "Narrator" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwgA > a` : Texte "Windows 2000" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwgQ` : Texte "," : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwgg` : Texte "etc." : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwgw` : Texte "L'un des enjeux de la démarche d'accessibilité du web est de s'extraire des cont" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwhA` : Texte "," : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwhQ` : Texte "etc." : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#Effets_induits_de_l\'accessibilité_des_contenus` : Texte "Effets induits de l'accessibilité des contenus" : ratio 18.50:1 (#101418 sur #ffffff), minimum 3.0:1 pour du texte large (19.2 px, graisse 700).
+- **Conforme** `#mwhg > div > span > a:nth-of-type(1) > span` : Texte "modifier" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (13 px, graisse 400).
+- **Conforme** `#mwhg > div > span > a:nth-of-type(2) > span` : Texte "modifier le code" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (13 px, graisse 400).
+- **Conforme** `#mwhw` : Texte "Au-delà des bénéfices atteints pour les utilisateurs handicapés, l'accessibilité" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwiA` : Texte "utilisabilité" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwiw` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwig` : Texte "Note 5" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwjA` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwjQ` : Texte "L'accessibilité des contenus rejoint également en partie la problématique de l'a" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwjg` : Texte "mobiles" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwkA` : Texte "Mobile Web Best" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwkA > span` : Texte "Practices 1.0" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwkQ > a` : Texte "World Wide Web Consortium" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwlA` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwkw` : Texte "Note 6" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwlQ` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwlg` : Texte "web mobile" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwmQ` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwmA` : Texte "Note 7" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwmg` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#Accessibilité_des_contenus_ou_accessibilité_universelle` : Texte "Accessibilité des contenus ou accessibilité universelle" : ratio 18.50:1 (#101418 sur #ffffff), minimum 3.0:1 pour du texte large (19.2 px, graisse 700).
+- **Conforme** `#mwmw > div > span > a:nth-of-type(1) > span` : Texte "modifier" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (13 px, graisse 400).
+- **Conforme** `#mwmw > div > span > a:nth-of-type(2) > span` : Texte "modifier le code" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (13 px, graisse 400).
+- **Conforme** `#mwnA` : Texte "Certains acteurs de l'accessibilité web" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwnw` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwng` : Texte "Note 8" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwoA` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwoQ` : Texte "«" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwpA` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwow` : Texte "W3C 6" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwpQ` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwpg > a` : Texte "World Wide Web Consortium" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwpw` : Texte "Tim Berners-Lee" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwqA > a` : Texte "World Wide Web" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwqw` : Texte "«" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwqw > a:nth-of-type(1)` : Texte "matériel" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwqw > a:nth-of-type(2)` : Texte "logiciel" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwqw > a:nth-of-type(3)` : Texte "langue maternelle" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwqw > a:nth-of-type(4)` : Texte "culture" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwrg` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwrQ` : Texte "4" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **Conforme** `#mwrw` : Texte "]" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwsA` : Texte "L'accessibilité des contenus reste cependant, aux points de vue normatif et opér" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwsQ` : Texte "qualité web" : ratio 16.13:1 (#202122 sur #ffffff), minimum 4.5:1 pour du texte normal (16 px, graisse 400).
+- **Conforme** `#mwtA` : Texte "[" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (0 px, graisse 400).
+- **Conforme** `#mwsw` : Texte "Note 9" : ratio 5.37:1 (#3366cc sur #ffffff), minimum 4.5:1 pour du texte normal (12.8 px, graisse 400).
+- **À vérifier** : Limite de 200 textes atteinte : les textes suivants de la page n'ont pas été vérifiés.
+
+### RGAA 9.1 : Dans chaque page web, l'information est-elle structurée par l'utilisation appropriée de titres ?
+
+- **Conforme** `<h2 class="vector-pinnable-header-label">Sommaire</h2>` : Le titre h2 "Sommaire" respecte la hiérarchie.
+- **Conforme** `<h1 class="firstHeading mw-first-heading" id="firstHeading"><span dir="ltr" lang="fr"><span class="mw-page-title-main">Accessibilité du web</span></span></h1>` : Le titre h1 "Accessibilité du web" respecte la hiérarchie.
+- **Conforme** `<h2 id="Champ_de_l'accessibilité"><span id="Champ_de_l.27accessibilit.C3.A9" typeof="mw:FallbackId"></span>Champ de l'accessibilité</h2>` : Le titre h2 "Champ de l'accessibilité" respecte la hiérarchie.
+- **Conforme** `<h3 id="Contextes_utilisateur">Contextes utilisateur</h3>` : Le titre h3 "Contextes utilisateur" respecte la hiérarchie.
+- **Conforme** `<h3 id="Effets_induits_de_l'accessibilité_des_contenus"><span id="Effets_induits_de_l.27accessibilit.C3.A9_des_contenus" typeof="mw:FallbackId"></span>Effets induits de l'accessibilité des contenus</…` : Le titre h3 "Effets induits de l'accessibilité des contenus" respecte la hiérarchie.
+- **Conforme** `<h3 id="Accessibilité_des_contenus_ou_accessibilité_universelle"><span id="Accessibilit.C3.A9_des_contenus_ou_accessibilit.C3.A9_universelle" typeof="mw:FallbackId"></span>Accessibilité des contenus …` : Le titre h3 "Accessibilité des contenus ou accessibilité universelle" respecte la hiérarchie.
+- **Conforme** `<h3 id="Composantes">Composantes</h3>` : Le titre h3 "Composantes" respecte la hiérarchie.
+- **Conforme** `<h2 id="Normes_internationales">Normes internationales</h2>` : Le titre h2 "Normes internationales" respecte la hiérarchie.
+- **Conforme** `<h3 id="Normes_de_la_Web_Accessibility_Initiative">Normes de la <span about="#mwt95" class="lang-en" data-mw='{"parts":[{"template":{"target":{"wt":"lang","href":"./Modèle:Lang"},"params":{"1":{"wt":…` : Le titre h3 "Normes de la Web Accessibility Initiative" respecte la hiérarchie.
+- **Conforme** `<h3 id="Recommandations_pour_interfaces_riches">Recommandations pour interfaces riches</h3>` : Le titre h3 "Recommandations pour interfaces riches" respecte la hiérarchie.
+- **Conforme** `<h3 id="Cycles_d'implémentation_de_l'accessibilité"><span id="Cycles_d.27impl.C3.A9mentation_de_l.27accessibilit.C3.A9" typeof="mw:FallbackId"></span>Cycles d'implémentation de l'accessibilité</h3>` : Le titre h3 "Cycles d'implémentation de l'accessibilité" respecte la hiérarchie.
+- **Conforme** `<h2 id="Déploiement,_évaluation_et_suivi"><span id="D.C3.A9ploiement.2C_.C3.A9valuation_et_suivi" typeof="mw:FallbackId"></span>Déploiement, évaluation et suivi</h2>` : Le titre h2 "Déploiement, évaluation et suivi" respecte la hiérarchie.
+- **Conforme** `<h3 id="Méthodes_d'application"><span id="M.C3.A9thodes_d.27application" typeof="mw:FallbackId"></span>Méthodes d'application</h3>` : Le titre h3 "Méthodes d'application" respecte la hiérarchie.
+- **Conforme** `<h3 id="Démarche_globale"><span id="D.C3.A9marche_globale" typeof="mw:FallbackId"></span>Démarche globale</h3>` : Le titre h3 "Démarche globale" respecte la hiérarchie.
+- **Conforme** `<h4 id="En_amont_des_contenus">En amont des contenus</h4>` : Le titre h4 "En amont des contenus" respecte la hiérarchie.
+- **Conforme** `<h4 id="En_cours_de_création_ou_de_refonte"><span id="En_cours_de_cr.C3.A9ation_ou_de_refonte" typeof="mw:FallbackId"></span>En cours de création ou de refonte</h4>` : Le titre h4 "En cours de création ou de refonte" respecte la hiérarchie.
+- **Conforme** `<h4 id="En_aval,_suivi_et_maintenance"><span id="En_aval.2C_suivi_et_maintenance" typeof="mw:FallbackId"></span>En aval, suivi et maintenance</h4>` : Le titre h4 "En aval, suivi et maintenance" respecte la hiérarchie.
+- **Conforme** `<h3 id="Évaluation"><span id=".C3.89valuation" typeof="mw:FallbackId"></span>Évaluation</h3>` : Le titre h3 "Évaluation" respecte la hiérarchie.
+- **Conforme** `<h4 id="Outils_automatiques">Outils automatiques</h4>` : Le titre h4 "Outils automatiques" respecte la hiérarchie.
+- **Conforme** `<h4 id="Tests_utilisateurs">Tests utilisateurs</h4>` : Le titre h4 "Tests utilisateurs" respecte la hiérarchie.
+- **Conforme** `<h4 id="Évaluation_experte"><span id=".C3.89valuation_experte" typeof="mw:FallbackId"></span>Évaluation experte</h4>` : Le titre h4 "Évaluation experte" respecte la hiérarchie.
+- **Conforme** `<h3 id="Politiques_d'accessibilité,_suivi_et_gestion_du_risque"><span id="Politiques_d.27accessibilit.C3.A9.2C_suivi_et_gestion_du_risque" typeof="mw:FallbackId"></span>Politiques d'accessibilité, su…` : Le titre h3 "Politiques d'accessibilité, suivi et gestion du risque" respecte la hiérarchie.
+- **Conforme** `<h4 id="Définition_d'une_politique_d'accessibilité_selon_la_WAI"><span id="D.C3.A9finition_d.27une_politique_d.27accessibilit.C3.A9_selon_la_WAI" typeof="mw:FallbackId"></span>Définition d'une politi…` : Le titre h4 "Définition d'une politique d'accessibilité selon la WAI" respecte la hiérarchie.
+- **Conforme** `<h4 id="Déclarations_de_conformité"><span id="D.C3.A9clarations_de_conformit.C3.A9" typeof="mw:FallbackId"></span>Déclarations de conformité</h4>` : Le titre h4 "Déclarations de conformité" respecte la hiérarchie.
+- **Conforme** `<h4 id="Certifications_d'accessibilité"><span id="Certifications_d.27accessibilit.C3.A9" typeof="mw:FallbackId"></span>Certifications d'accessibilité</h4>` : Le titre h4 "Certifications d'accessibilité" respecte la hiérarchie.
+- **Conforme** `<h2 id="Acteurs_de_l'accessibilité"><span id="Acteurs_de_l.27accessibilit.C3.A9" typeof="mw:FallbackId"></span>Acteurs de l'accessibilité</h2>` : Le titre h2 "Acteurs de l'accessibilité" respecte la hiérarchie.
+- **Conforme** `<h3 id="États"><span id=".C3.89tats" typeof="mw:FallbackId"></span>États</h3>` : Le titre h3 "États" respecte la hiérarchie.
+- **Conforme** `<h3 id="Associations_d'usagers_et_d'acteurs_du_web"><span id="Associations_d.27usagers_et_d.27acteurs_du_web" typeof="mw:FallbackId"></span>Associations d'usagers et d'acteurs du web</h3>` : Le titre h3 "Associations d'usagers et d'acteurs du web" respecte la hiérarchie.
+- **Conforme** `<h3 id="Organismes_de_formation">Organismes de formation</h3>` : Le titre h3 "Organismes de formation" respecte la hiérarchie.
+- **Conforme** `<h3 id="Organismes_de_labellisation">Organismes de labellisation</h3>` : Le titre h3 "Organismes de labellisation" respecte la hiérarchie.
+- **Conforme** `<h3 id="Prestataires_web">Prestataires web</h3>` : Le titre h3 "Prestataires web" respecte la hiérarchie.
+- **Conforme** `<h3 id="Responsables_de_sites">Responsables de sites</h3>` : Le titre h3 "Responsables de sites" respecte la hiérarchie.
+- **Conforme** `<h3 id="Grand_public">Grand public</h3>` : Le titre h3 "Grand public" respecte la hiérarchie.
+- **Conforme** `<h2 id="Législation_et_règlementation"><span id="L.C3.A9gislation_et_r.C3.A8glementation" typeof="mw:FallbackId"></span>Législation et règlementation</h2>` : Le titre h2 "Législation et règlementation" respecte la hiérarchie.
+- **Conforme** `<h3 id="Aux_États-Unis"><span id="Aux_.C3.89tats-Unis" typeof="mw:FallbackId"></span>Aux États-Unis</h3>` : Le titre h3 "Aux États-Unis" respecte la hiérarchie.
+- **Conforme** `<h3 id="Au_Canada">Au Canada</h3>` : Le titre h3 "Au Canada" respecte la hiérarchie.
+- **Conforme** `<h3 id="Dans_l'Union_européenne"><span id="Dans_l.27Union_europ.C3.A9enne" typeof="mw:FallbackId"></span>Dans l'Union européenne</h3>` : Le titre h3 "Dans l'Union européenne" respecte la hiérarchie.
+- **Conforme** `<h3 id="En_France">En France</h3>` : Le titre h3 "En France" respecte la hiérarchie.
+- **Conforme** `<h3 id="Au_Luxembourg">Au Luxembourg</h3>` : Le titre h3 "Au Luxembourg" respecte la hiérarchie.
+- **Conforme** `<h3 id="En_Suisse">En Suisse</h3>` : Le titre h3 "En Suisse" respecte la hiérarchie.
+- **Conforme** `<h2 id="État_de_l'accessibilité_du_web"><span id=".C3.89tat_de_l.27accessibilit.C3.A9_du_web" typeof="mw:FallbackId"></span>État de l'accessibilité du web</h2>` : Le titre h2 "État de l'accessibilité du web" respecte la hiérarchie.
+- **Conforme** `<h2 id="Notes_et_références"><span id="Notes_et_r.C3.A9f.C3.A9rences" typeof="mw:FallbackId"></span>Notes et références</h2>` : Le titre h2 "Notes et références" respecte la hiérarchie.
+- **Conforme** `<h3 id="Références_aux_documents_du_W3C"><span id="R.C3.A9f.C3.A9rences_aux_documents_du_W3C" typeof="mw:FallbackId"></span>Références aux documents du W3C</h3>` : Le titre h3 "Références aux documents du W3C" respecte la hiérarchie.
+- **Conforme** `<h3 id="Références"><span id="R.C3.A9f.C3.A9rences" typeof="mw:FallbackId"></span>Références</h3>` : Le titre h3 "Références" respecte la hiérarchie.
+- **Conforme** `<h3 id="Autres_références"><span id="Autres_r.C3.A9f.C3.A9rences" typeof="mw:FallbackId"></span>Autres références</h3>` : Le titre h3 "Autres références" respecte la hiérarchie.
+- **Conforme** `<h2 id="Voir_aussi">Voir aussi</h2>` : Le titre h2 "Voir aussi" respecte la hiérarchie.
+- **Conforme** `<h3 id="Bibliographie">Bibliographie</h3>` : Le titre h3 "Bibliographie" respecte la hiérarchie.
+- **Conforme** `<h3 id="Articles_connexes">Articles connexes</h3>` : Le titre h3 "Articles connexes" respecte la hiérarchie.
+- **Conforme** `<h3 id="Liens_externes">Liens externes</h3>` : Le titre h3 "Liens externes" respecte la hiérarchie.
